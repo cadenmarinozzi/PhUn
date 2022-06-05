@@ -1,0 +1,50 @@
+@use '../../colors.scss' as *;
+
+.simulation-page-container {
+    text-align: center;
+}
+
+.simulation-page {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+}
+
+.section {
+    border: 1px;
+    border-style: solid;
+
+    border-color: $border;
+    border-radius: 5px;
+
+    margin: 10px;
+
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    text-align: left;
+}
+
+.simulation-title {
+    font-family: 'MoskUltraBold';
+    font-size: 25pt;
+    
+    margin: 20px;
+}
+
+.code {
+    font-family: 'Roboto Mono';
+    font-size: 15pt;
+
+    tab-size: 4;
+}
+
+.description-section {
+    transform:translate(calc(100% + 20px));
+}
+
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+}

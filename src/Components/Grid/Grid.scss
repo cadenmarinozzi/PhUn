@@ -1,0 +1,42 @@
+@use '../../colors.scss' as *;
+
+.grid-container {
+    display: grid;
+
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+
+    margin-top: 20px;
+}
+
+.grid-card {
+    display: flex;
+
+    align-items: center;
+
+    border-radius: 10px;
+    border: 1px solid $border;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(0.99);
+    }
+}
+
+.grid-card h4 {
+    overflow: hidden;
+    display: -webkit-box;
+    
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.grid-card-header {
+    display: flex;
+    justify-content: space-between;
+}
