@@ -20,6 +20,11 @@ class GridCard extends Component {
 								View
 							</Button>
 						</Link>
+						<Link to="/PhUn/simulation">
+							<Button onClick={this.handleClick.bind(this)}>
+								View
+							</Button>
+						</Link>
 					</div>
 
 					{this.props.children}

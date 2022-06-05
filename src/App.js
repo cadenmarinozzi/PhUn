@@ -31,7 +31,24 @@ class App extends Component {
 						}
 					/>
 					<Route
+						path="/PhUn"
+						element={
+							<HomePage
+								setSimulationState={this.setState.bind(this)}
+								simulationName={this.state.simulationName}
+							/>
+						}
+					/>
+					<Route
 						path="/simulation"
+						element={
+							<SimulationPage
+								simulationName={this.state.simulationName}
+							/>
+						}
+					/>
+					<Route
+						path="/PhUn/simulation"
 						element={
 							<SimulationPage
 								simulationName={this.state.simulationName}

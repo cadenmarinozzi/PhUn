@@ -7,7 +7,7 @@ class Navbar extends Component {
 	render() {
 		return (
 			<div className="navbar-container">
-				<Link to="/">
+				<Link to="/PhUn">
 					<h1 className="navbar-title">PhUn</h1>
 				</Link>
 
@@ -16,7 +16,7 @@ class Navbar extends Component {
 						<span className="material-symbols-outlined">home</span>
 					</Link>
 
-					<Link to="/simulation">
+					<Link to="/PhUn/simulation">
 						<span className="material-symbols-outlined">
 							build_circle
 						</span>
