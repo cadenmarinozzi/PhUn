@@ -16,23 +16,17 @@ class BezierCurves extends Component {
 		let canvas = this.state.ref.current;
 		let ctx = canvas.getContext('2d');
 
-		function resize() {
+		function resize(shouldDraw) {
 			width = canvas.parentElement.clientWidth;
 			height = canvas.parentElement.clientHeight;
 
 			canvas.width = width;
 			canvas.height = height;
+
+			if (shouldDraw) draw();
 		}
 
-		resize();
-		window.addEventListener('resize', resize);
-
-		const points = [
-			{ x: 10, y: 5 },
-			{ x: width - 10, y: height / 2 },
-		];
-
-		const controlPoint = { x: width / 2 - 50, y: height / 2 + 50 };
+		window.addEventListener('resize', resize.bind(true));
 
 		function circle(x, y, radius, filled = true) {
 			ctx.beginPath();
@@ -103,6 +97,15 @@ class BezierCurves extends Component {
 				lastPoint = { x, y };
 			}
 		}
+
+		resize();
+
+		const points = [
+			{ x: 10, y: 5 },
+			{ x: width - 10, y: height / 2 },
+		];
+
+		const controlPoint = { x: width / 2 - 50, y: height / 2 + 50 };
 
 		draw();
 	}

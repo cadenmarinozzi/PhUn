@@ -12,7 +12,7 @@ class Navbar extends Component {
 				</Link>
 
 				<div>
-					<Link to="/">
+					<Link to="/PhUn">
 						<span className="material-symbols-outlined">home</span>
 					</Link>
 

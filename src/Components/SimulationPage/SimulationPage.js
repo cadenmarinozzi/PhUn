@@ -10,7 +10,8 @@ function SimulationPage(props) {
 	let canvasRef = createRef();
 	let [cookies, setCookie] = useCookies(['user']);
 
-	let cookieCode = code[props.simulationName || cookies['simulationName']];
+	let simulationName = props.simulationName ?? cookies['simulationName'];
+	let cookieCode = code[simulationName];
 
 	let [codeString, setCode] = useState(cookieCode);
 
@@ -74,7 +75,7 @@ function SimulationPage(props) {
 					className="simulation-title"
 					property="text"
 					duration={3000}>
-					{props.simulationName}
+					{simulationName}
 				</Gradient>
 			</i>
 

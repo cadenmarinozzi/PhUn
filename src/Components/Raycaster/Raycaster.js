@@ -16,32 +16,17 @@ class Raycaster extends Component {
 		let canvas = this.state.ref.current;
 		let ctx = canvas.getContext('2d');
 
-		function resize() {
+		function resize(shouldDraw) {
 			width = canvas.parentElement.clientWidth;
 			height = canvas.parentElement.clientHeight;
 
 			canvas.width = width;
 			canvas.height = height;
+
+			if (shouldDraw) draw();
 		}
 
-		resize();
-		window.addEventListener('resize', resize);
-
-		const points = [
-			{ x: 170, y: 100, z: 5, radius: 30 },
-			{
-				x: width / 2,
-				y: height / 2,
-				z: 20,
-				radius: 50,
-			},
-			{
-				x: width / 2 + 60,
-				y: height / 2,
-				z: 0,
-				radius: 50,
-			},
-		];
+		window.addEventListener('resize', resize.bind(true));
 
 		function draw() {
 			ctx.clearRect(0, 0, width, height);
@@ -74,6 +59,24 @@ class Raycaster extends Component {
 				}
 			}
 		}
+
+		resize();
+
+		const points = [
+			{ x: 170, y: 100, z: 5, radius: 30 },
+			{
+				x: width / 2,
+				y: height / 2,
+				z: 20,
+				radius: 50,
+			},
+			{
+				x: width / 2 + 60,
+				y: height / 2,
+				z: 0,
+				radius: 50,
+			},
+		];
 
 		draw();
 

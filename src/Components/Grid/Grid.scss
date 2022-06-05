@@ -5,15 +5,10 @@
 
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-
     margin-top: 20px;
 }
 
 .grid-card {
-    display: flex;
-
-    align-items: center;
-
     border-radius: 10px;
     border: 1px solid $border;
 
@@ -26,6 +21,9 @@
     &:hover {
         transform: scale(0.99);
     }
+}
+
+.grid-card-content {
 }
 
 .grid-card h4 {

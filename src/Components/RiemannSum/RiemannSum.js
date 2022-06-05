@@ -22,9 +22,10 @@ class RiemannSum extends Component {
 
 			canvas.width = width;
 			canvas.height = height;
+
+			draw();
 		}
 
-		resize();
 		window.addEventListener('resize', resize);
 
 		function line(x1, y1, x2, y2) {
@@ -61,6 +62,17 @@ class RiemannSum extends Component {
 
 		let mouseDown;
 
+		function animate() {
+			if (!mouseDown) {
+				phase += 0.01;
+				draw();
+			}
+
+			requestAnimationFrame(animate);
+		}
+
+		animate();
+
 		canvas.addEventListener('mousedown', (e) => {
 			mouseDown = true;
 		});
@@ -76,6 +88,7 @@ class RiemannSum extends Component {
 			draw();
 		});
 
+		resize();
 		draw();
 	}
 

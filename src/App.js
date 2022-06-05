@@ -12,7 +12,7 @@ class App extends Component {
 
 		this.state = {
 			link: createRef(),
-			simulationName: '',
+			simulationName: null,
 		};
 	}
 	render() {
