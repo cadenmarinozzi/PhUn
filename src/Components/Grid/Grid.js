@@ -5,7 +5,7 @@ import { Component } from 'react';
 
 class GridCard extends Component {
 	handleClick() {
-		this.props.onClick(this.props.title);
+		this.props.onClick(this.props.title, this.props.description);
 	}
 
 	render() {

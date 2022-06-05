@@ -13,6 +13,7 @@ class App extends Component {
 		this.state = {
 			link: createRef(),
 			simulationName: null,
+			simulationDescription: null,
 		};
 	}
 	render() {
@@ -36,6 +37,9 @@ class App extends Component {
 							<HomePage
 								setSimulationState={this.setState.bind(this)}
 								simulationName={this.state.simulationName}
+								simulationDescription={
+									this.state.simulationDescription
+								}
 							/>
 						}
 					/>

@@ -8,9 +8,11 @@ import { useCookies } from 'react-cookie';
 
 function SimulationPage(props) {
 	let canvasRef = createRef();
-	let [cookies, setCookie] = useCookies(['user']);
+	let [cookies] = useCookies(['user']);
 
 	let simulationName = props.simulationName ?? cookies['simulationName'];
+	let simulationDescription =
+		props.simulationDescription ?? cookies['simulationDescription'];
 	let cookieCode = code[simulationName];
 
 	let [codeString, setCode] = useState(cookieCode);
@@ -54,7 +56,7 @@ function SimulationPage(props) {
 			ctx.stroke();
 			ctx.closePath();
 		}
-		console.log(codeString);
+
 		eval(codeString);
 	}, []);
 
@@ -91,6 +93,9 @@ function SimulationPage(props) {
 							text={cookieCode}
 							language="javascript"
 							theme={googlecode}
+							customStyle={{
+								height: 'calc(50vh - 80px)',
+							}}
 							onChange={(code) => setCode(code)}
 						/>
 					</div>
@@ -102,7 +107,8 @@ function SimulationPage(props) {
 				</div>
 
 				<div className="section description-section">
-					A we ewf w eg ewgewgwe
+					<h2>Description</h2>
+					{simulationDescription}
 				</div>
 			</div>
 		</div>

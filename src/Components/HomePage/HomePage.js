@@ -7,16 +7,21 @@ import NBody from '../N-Body';
 import RiemannSum from '../RiemannSum';
 import Raycaster from '../Raycaster';
 import { useCookies } from 'react-cookie';
+import NewtonsFractals from '../NewtonsFractals';
+import GameOfLife from '../GameOfLife';
+import ClothSimulation from '../ClothSimulation';
 
 function HomePage(props) {
 	let [cookies, setCookie] = useCookies(['user']);
 
-	function handleClick(title) {
+	function handleClick(title, description) {
 		props.setSimulationState({
 			simulationName: title,
+			simulationDescription: description,
 		});
 
 		setCookie('simulationName', title, { path: '/' });
+		setCookie('simulationDescription', description, { path: '/' });
 	}
 
 	return (
@@ -84,6 +89,27 @@ function HomePage(props) {
 					title="Raycasting"
 					description="Raycasting is a rendering method where rays are shot from the camera to each pixel on the screen, and the pixel is colored based on if the ray hit or not.">
 					<Raycaster />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Game Of Life"
+					description="Game Of Life is a cellular automation game created by John Conway. It simulates life by using a grid of cells and a few rules each cell has to abide by.">
+					<GameOfLife />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Newtons Fractals"
+					description="Newtons Fractals uses Newtons method to find the roots of a function, and then plots the path to those roots, creating a beautiful rendering.">
+					<NewtonsFractals />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Cloth Simulation"
+					description="Cloth Simulations emulate real world physics to simulate the structure and motion of a cloth.">
+					<ClothSimulation />
 				</GridCard>
 			</Grid>
 		</div>
