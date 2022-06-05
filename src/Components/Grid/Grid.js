@@ -15,11 +15,6 @@ class GridCard extends Component {
 					<div className="grid-card-header">
 						<h2>{this.props.title}</h2>
 
-						<Link to="/simulation">
-							<Button onClick={this.handleClick.bind(this)}>
-								View
-							</Button>
-						</Link>
 						<Link to="/PhUn/simulation">
 							<Button onClick={this.handleClick.bind(this)}>
 								View
