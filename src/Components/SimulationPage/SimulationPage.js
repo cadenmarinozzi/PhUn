@@ -32,8 +32,8 @@ function SimulationPage(props) {
 		let draw;
 
 		function resize(shouldDraw) {
-			width = canvas.parentElement.clientWidth;
-			height = canvas.parentElement.clientHeight;
+			width = canvas.parentElement.clientWidth - 20;
+			height = canvas.parentElement.clientHeight - 40;
 
 			canvas.width = width;
 			canvas.height = height;

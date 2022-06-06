@@ -14,4 +14,15 @@ button {
     cursor: pointer;
 
     font-size: 12pt;
+
+    transition: border-color, border-radius 0.1s ease-in;
+
+    &:hover {
+        border-color: #666;
+        border-radius: 5px;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
 }
