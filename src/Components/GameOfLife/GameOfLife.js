@@ -35,10 +35,8 @@ class GameOfLife extends Component {
 				future[i] = new Array(N).fill(0);
 			}
 
-			// Loop through every cell
 			for (let l = 0; l < M; l++) {
 				for (let m = 0; m < N; m++) {
-					// finding no Of Neighbours that are alive
 					let aliveNeighbours = 0;
 					for (let i = -1; i < 2; i++) {
 						for (let j = -1; j < 2; j++) {
@@ -51,23 +49,14 @@ class GameOfLife extends Component {
 								aliveNeighbours += grid[l + i][m + j];
 						}
 					}
-
-					// The cell needs to be subtracted from
-					// its neighbours as it was counted before
 					aliveNeighbours -= grid[l][m];
 
-					// Implementing the Rules of Life
-
-					// Cell is lonely and dies
-					if (grid[l][m] == 1 && aliveNeighbours < 2)
+					if (grid[l][m] === 1 && aliveNeighbours < 2)
 						future[l][m] = 0;
-					// Cell dies due to over population
-					else if (grid[l][m] == 1 && aliveNeighbours > 3)
+					else if (grid[l][m] === 1 && aliveNeighbours > 3)
 						future[l][m] = 0;
-					// A new cell is born
-					else if (grid[l][m] == 0 && aliveNeighbours == 3)
+					else if (grid[l][m] === 0 && aliveNeighbours === 3)
 						future[l][m] = 1;
-					// Remains the same
 					else future[l][m] = grid[l][m];
 				}
 			}
@@ -87,11 +76,11 @@ class GameOfLife extends Component {
 		let M = Math.floor(width / 5),
 			N = Math.floor(height / 5);
 
-		// Initializing the grid.
 		let grid = [];
 
 		for (let i = 0; i < M; i++) {
 			let row = [];
+
 			for (let j = 0; j < N; j++) {
 				row[j] = Math.random() > 0.5 ? 1 : 0;
 			}
@@ -99,11 +88,17 @@ class GameOfLife extends Component {
 			grid[i] = row;
 		}
 
+		let updating = true;
+
 		function animate(grid) {
-			let a = update(grid, M, N);
+			let newGrid = grid;
+
+			if (updating) {
+				newGrid = update(grid, M, N);
+			}
 
 			setTimeout(() => {
-				animate(a);
+				animate(newGrid);
 			}, 100);
 		}
 

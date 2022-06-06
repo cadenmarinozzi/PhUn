@@ -10,6 +10,7 @@ import { useCookies } from 'react-cookie';
 import NewtonsFractals from '../NewtonsFractals';
 import GameOfLife from '../GameOfLife';
 import ClothSimulation from '../ClothSimulation';
+import Latex from 'react-latex';
 
 function HomePage(props) {
 	let [cookies, setCookie] = useCookies(['user']);
@@ -52,27 +53,50 @@ function HomePage(props) {
 					description="Bezier curves are a type of mathematical curve that is
 							defined by a set of points, called control points, that
 							define the shape of the curve. It works by interpolating
-							between the control points to create a smooth curve.">
+							between the control points to create a smooth curve. 
+							A quadratic bezier curve, a curve with 3 control points, 
+							is defined with the following equation: 
+							$x_{\tiny1}+(1-t)^2(x_{\tiny1}-x_{\tiny0})+2t(x_{\tiny2}-x_{\tiny1})$
+							where $t$ is the parameter that determines the position
+							of the curve on the curve, and $x_{\tiny0}, x_{\tiny1}, x_{\tiny2}$ are the control points.
+							$t$ is of the range $0\leq t\leq 1$.
+							">
 					<BezierCurves />
 				</GridCard>
 
 				<GridCard
 					onClick={handleClick}
 					title="Meta Balls"
-					description="Meta Balls are isosurfaces of n-dimensional space. They
-						work by creating a set of points that lie on the surface
+					description="Meta Balls are isosurfaces of n-dimensional space. 
+						They work by creating a set of points that lie on the surface
 						of the space and then using these points to create a
-						smooth curve.">
+						smooth curve.
+						The fundemental equation for a meta ball is:
+						$r/d^2$
+						where $r$ is the radius of the ball, and $d$ is the distance from the center of the ball to a pixel.
+						Each pixel is then assigned a value based on the distance from the center of the ball to the pixel.
+						For each pixel on the screen we sum the values of each meta ball, which is what creates the smooth interpolation between close meta balls.
+						">
 					<MetaBalls />
 				</GridCard>
 
 				<GridCard
 					onClick={handleClick}
 					title="N-Body"
-					description="An N-Body simulation is a simulation that uses a set of
+					description="An N-Body simulation uses a set of
 						particles to simulate the motion of bodies in space.
 						N-bodies use Newton's laws of motion to calculate the
-						forces acting on each body.">
+						forces acting on each body.
+						Each body is attracted to every other body with Newton's universal law of gravitation: 
+						$F_g=G {mM\over r^2}$ where $G$ is the gravitational constant $6.67408e^{-11}$, 
+						$m$ and $M$ are the masses of the bodies,
+						and $r$ is the distance between the bodies.
+						Also, in the distance function, a softening parameter, $ϵ$, is used to prevent bodies ontop of each other having a NaN force. This can be any value greater than 0, but larger values will result in less realistic simulations.
+						Next, Newton's law of motion is used to calculate the force acting on each body: $F=m/a$ where $m$ is the mass of the body, $a$ is the acceleration, and $F$ is the force acting on the body. 
+						The acceleration is then calculated, $a=F/m$,
+						The velocity is then calculated, $v=a*dt$ where $dt$ is the time step.
+						And finally the position is calculated, $x=v*dt$ where $dt$ is the time step.
+						">
 					<NBody />
 				</GridCard>
 

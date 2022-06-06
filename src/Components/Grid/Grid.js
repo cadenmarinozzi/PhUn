@@ -2,6 +2,11 @@ import './Grid.scss';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
+import Latex from 'react-latex';
+
+function toLatex(str) {
+	return <Latex>{str}</Latex>;
+}
 
 class GridCard extends Component {
 	handleClick() {
@@ -24,7 +29,7 @@ class GridCard extends Component {
 
 					{this.props.children}
 
-					<h4>{this.props.description}</h4>
+					<h4>{toLatex(this.props.description)}</h4>
 				</div>
 			</div>
 		);

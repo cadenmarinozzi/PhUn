@@ -5,6 +5,11 @@ import { CodeBlock, googlecode } from 'react-code-blocks';
 import { Gradient } from 'react-gradient';
 import code from '../../simulationCode';
 import { useCookies } from 'react-cookie';
+import Latex from 'react-latex';
+
+function toLatex(str) {
+	return <Latex>{str}</Latex>;
+}
 
 function SimulationPage(props) {
 	let canvasRef = createRef();
@@ -24,16 +29,20 @@ function SimulationPage(props) {
 		let canvas = canvasRef.current;
 		let ctx = canvas.getContext('2d');
 
-		function resize() {
+		let draw;
+
+		function resize(shouldDraw) {
 			width = canvas.parentElement.clientWidth;
 			height = canvas.parentElement.clientHeight;
 
 			canvas.width = width;
 			canvas.height = height;
+
+			if (shouldDraw) draw();
 		}
 
 		resize();
-		window.addEventListener('resize', resize);
+		window.addEventListener('resize', resize.bind(true));
 
 		function circle(x, y, radius, filled = true) {
 			ctx.beginPath();
@@ -88,7 +97,7 @@ function SimulationPage(props) {
 						<Button onClick={handleClick}>Reset</Button>
 					</div>
 
-					<div className="code">
+					<div className="code-section">
 						<CodeBlock
 							text={cookieCode}
 							language="javascript"
@@ -108,7 +117,7 @@ function SimulationPage(props) {
 
 				<div className="section description-section">
 					<h2>Description</h2>
-					{simulationDescription}
+					{toLatex(simulationDescription)}
 				</div>
 			</div>
 		</div>
