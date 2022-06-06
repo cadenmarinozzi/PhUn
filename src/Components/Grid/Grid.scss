@@ -23,9 +23,6 @@
     }
 }
 
-.grid-card-content {
-}
-
 .grid-card h4 {
     overflow: hidden;
     display: -webkit-box;
@@ -37,4 +34,8 @@
 .grid-card-header {
     display: flex;
     justify-content: space-between;
+}
+
+.grid-card button {
+    margin-left: 10px;
 }

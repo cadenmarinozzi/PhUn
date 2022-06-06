@@ -108,7 +108,7 @@ class ClothSimulation extends Component {
 					offsetX = dx * percent,
 					offsetY = dy * percent;
 
-				if (distance > spring.len * elasticity) {
+				if (distance * 2 > spring.len * elasticity) {
 					spring.removed = true;
 				}
 

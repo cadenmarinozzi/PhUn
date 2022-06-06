@@ -11,6 +11,8 @@ import NewtonsFractals from '../NewtonsFractals';
 import GameOfLife from '../GameOfLife';
 import ClothSimulation from '../ClothSimulation';
 import Latex from 'react-latex';
+import PerlinNoise from '../PerlinNoise';
+import FluidSimulation from '../FluidSimulation';
 
 function HomePage(props) {
 	let [cookies, setCookie] = useCookies(['user']);
@@ -134,6 +136,20 @@ function HomePage(props) {
 					title="Cloth Simulation"
 					description="Cloth Simulations emulate real world physics to simulate the structure and motion of a cloth.">
 					<ClothSimulation />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Perlin Noise"
+					description="Perlin Noise is a random noise function that is used to create smooth textures and patterns.">
+					<PerlinNoise />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Fluid Simulation"
+					description="Perlin Noise is a random noise function that is used to create smooth textures and patterns.">
+					<FluidSimulation />
 				</GridCard>
 			</Grid>
 		</div>

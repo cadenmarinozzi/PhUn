@@ -3,6 +3,8 @@
 Physics in the Universe.
 A collection of physics and math related simulations and tools.
 
+Keep in mind that since this project is very new, the code is not pretty.
+
 This app is very much a work in progress, so expect bugs and lots of improper scaling.
 
 # Website
