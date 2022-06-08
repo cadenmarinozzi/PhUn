@@ -30,14 +30,14 @@ class MetaBalls extends Component {
 
 		const points = [
 			{
-				x: 120,
-				y: 100,
+				x: Math.random() * width,
+				y: Math.random() * height,
 				vx: Math.random() * 2 - 1,
 				vy: Math.random() * 2 - 1,
 			},
 			{
-				x: width / 2,
-				y: height / 2,
+				x: Math.random() * width,
+				y: Math.random() * height,
 				vx: Math.random() * 2 - 1,
 				vy: Math.random() * 2 - 1,
 			},
@@ -51,14 +51,16 @@ class MetaBalls extends Component {
 
 				if (selectedPoint === point) continue;
 
-				point.x += point.vx;
-				point.y += point.vy;
-
 				if (point.x + 50 > width || point.x - 50 < 0) {
 					point.vx = -point.vx;
-				} else if (point.y + 50 > height || point.y - 50 < 0) {
+				}
+
+				if (point.y + 50 > height || point.y - 50 < 0) {
 					point.vy = -point.vy;
 				}
+
+				point.x += point.vx;
+				point.y += point.vy;
 			}
 		}
 

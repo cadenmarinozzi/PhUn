@@ -10,9 +10,9 @@ import { useCookies } from 'react-cookie';
 import NewtonsFractals from '../NewtonsFractals';
 import GameOfLife from '../GameOfLife';
 import ClothSimulation from '../ClothSimulation';
-import Latex from 'react-latex';
 import PerlinNoise from '../PerlinNoise';
-import FluidSimulation from '../FluidSimulation';
+import VectorField from '../VectorField';
+import Mandelbrot from '../Mandelbrot';
 
 function HomePage(props) {
 	let [cookies, setCookie] = useCookies(['user']);
@@ -147,9 +147,19 @@ function HomePage(props) {
 
 				<GridCard
 					onClick={handleClick}
-					title="Fluid Simulation"
-					description="Perlin Noise is a random noise function that is used to create smooth textures and patterns.">
-					<FluidSimulation />
+					title="Vector Field"
+					description="A Vector Field is a grid of vectors, each of which have a position, a direction, and a magnitude.">
+					<VectorField />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Mandelbrot"
+					description="Mandelbrot is a fractal that is used to create a set of points that lie on the surface of the Mandelbrot set. The Mandelbrot set is a set of points that lie on the surface of a plane that is defined by a function. The function is defined by the following equation: $z_{\tiny1}=z_{\tiny0}^2+c$ where $z_{\tiny1}$ is the new value of the point, $z_{\tiny0}$ is the old value of the point, and $c$ is the constant that is added to the function.
+						The function is then iterated until the value of the point is greater than 2, which is the escape value.
+						The escape value is then used to determine the color of the point.
+					">
+					<Mandelbrot />
 				</GridCard>
 			</Grid>
 		</div>
