@@ -166,6 +166,21 @@ class ClothSimulation extends Component {
 
 		canvas.addEventListener('mousedown', (e) => {
 			mouseDown = true;
+
+			let closest = 100000;
+
+			for (let node of nodes) {
+				if (node.holder) continue;
+
+				let dx = e.offsetX - node.x,
+					dy = e.offsetY - node.y,
+					distance = Math.sqrt(dx * dx + dy * dy);
+
+				if (distance < closest) {
+					closest = distance;
+					closestNode = node;
+				}
+			}
 		});
 
 		canvas.addEventListener('mouseup', (e) => {
@@ -183,22 +198,7 @@ class ClothSimulation extends Component {
 
 			// get closest node
 
-			let closest = 100000;
-
-			for (let node of nodes) {
-				if (node.holder) continue;
-
-				let dx = x - node.x,
-					dy = y - node.y,
-					distance = Math.sqrt(dx * dx + dy * dy);
-
-				if (distance < closest) {
-					closest = distance;
-					closestNode = node;
-				}
-			}
-
-			closestNode.fixed = false;
+			closestNode.fixed = true;
 			closestNode.held = true;
 			closestNode.x = x;
 			closestNode.y = y;
