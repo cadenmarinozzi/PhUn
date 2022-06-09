@@ -1,11 +1,22 @@
 import { Component, createRef } from 'react';
 
+function isInViewport(element) {
+	const rect = element.getBoundingClientRect();
+	const viewSize = Math.max(
+		document.documentElement.clientHeight,
+		window.innerHeight
+	);
+
+	return !(rect.bottom < 0 || rect.top - viewSize >= 0);
+}
+
 class VectorField extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			ref: createRef(),
+			inViewport: false,
 		};
 	}
 

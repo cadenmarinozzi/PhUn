@@ -13,6 +13,7 @@ import ClothSimulation from '../ClothSimulation';
 import PerlinNoise from '../PerlinNoise';
 import VectorField from '../VectorField';
 import Mandelbrot from '../Mandelbrot';
+import CalculatingPi from '../CalculatingPi';
 
 function HomePage(props) {
 	let [cookies, setCookie] = useCookies(['user']);
@@ -105,8 +106,15 @@ function HomePage(props) {
 				<GridCard
 					onClick={handleClick}
 					title="Riemann Sum"
-					description="A Riemann sum is a sum of intervals. It is used to find
-						the area under a curve.">
+					description="The Riemann Sum is a mathematical function that is used to approximate the area under a curve.
+							The Riemann Sum is a function that is defined by a function $f(x)$ and a set of intervals $[a,b]$
+							where $a$ and $b$ are the endpoints of the interval.
+							The Riemann Sum is then calculated by summing the area of each interval,
+							and then dividing the sum by the width of the interval.
+							A Riemann Sum is defined by the following equation:
+							$\displaystyle\sum_{i=1}^n f(x_{\tiny i})\Delta{x_{\tiny i}}$
+							where $x_{\tiny i}$ is the endpoint of the interval, and $n$ is the number of intervals.
+							">
 					<RiemannSum />
 				</GridCard>
 
@@ -160,6 +168,16 @@ function HomePage(props) {
 						The escape value is then used to determine the color of the point.
 					">
 					<Mandelbrot />
+				</GridCard>
+
+				<GridCard
+					onClick={handleClick}
+					title="Mandelbrot"
+					description="Mandelbrot is a fractal that is used to create a set of points that lie on the surface of the Mandelbrot set. The Mandelbrot set is a set of points that lie on the surface of a plane that is defined by a function. The function is defined by the following equation: $z_{\tiny1}=z_{\tiny0}^2+c$ where $z_{\tiny1}$ is the new value of the point, $z_{\tiny0}$ is the old value of the point, and $c$ is the constant that is added to the function.
+						The function is then iterated until the value of the point is greater than 2, which is the escape value.
+						The escape value is then used to determine the color of the point.
+					">
+					<CalculatingPi />
 				</GridCard>
 			</Grid>
 		</div>
