@@ -196,8 +196,6 @@ class ClothSimulation extends Component {
 			let x = e.offsetX;
 			let y = e.offsetY;
 
-			// get closest node
-
 			closestNode.fixed = true;
 			closestNode.held = true;
 			closestNode.x = x;

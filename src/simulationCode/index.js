@@ -262,6 +262,7 @@ canvas.addEventListener('mousemove', (e) => {
 code['Cloth Simulation'] = `\
 let nodes = [];
 let springs = [];
+var animating = true;
 
 class Node {
     constructor(x, y, fixed, holder) {
@@ -389,7 +390,10 @@ function update() {
 function animate() {
     draw();
     update();
-    requestAnimationFrame(animate);
+
+    if (animating) {
+        requestAnimationFrame(animate);
+    }
 }
 
 animate();
@@ -399,6 +403,21 @@ let closestNode;
 
 canvas.addEventListener('mousedown', (e) => {
     mouseDown = true;
+
+    let closest = 100000;
+
+    for (let node of nodes) {
+        if (node.holder) continue;
+
+        let dx = e.offsetX - node.x,
+            dy = e.offsetY - node.y,
+            distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < closest) {
+            closest = distance;
+            closestNode = node;
+        }
+    }
 });
 
 canvas.addEventListener('mouseup', (e) => {
@@ -414,24 +433,7 @@ canvas.addEventListener('mousemove', (e) => {
     let x = e.offsetX;
     let y = e.offsetY;
 
-    // get closest node
-
-    let closest = 100000;
-
-    for (let node of nodes) {
-        if (node.holder) continue;
-
-        let dx = x - node.x,
-            dy = y - node.y,
-            distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < closest) {
-            closest = distance;
-            closestNode = node;
-        }
-    }
-
-    closestNode.fixed = false;
+    closestNode.fixed = true;
     closestNode.held = true;
     closestNode.x = x;
     closestNode.y = y;

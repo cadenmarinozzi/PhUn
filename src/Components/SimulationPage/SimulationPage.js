@@ -21,6 +21,7 @@ function SimulationPage(props) {
 	let cookieCode = code[simulationName];
 
 	let [codeString, setCode] = useState(cookieCode);
+	var animating;
 
 	useEffect(() => {
 		let width;
@@ -73,6 +74,10 @@ function SimulationPage(props) {
 		setCode(cookieCode);
 	}
 
+	function handleResetClick() {
+		animating = false;
+	}
+
 	return (
 		<div className="simulation-page-container">
 			<i>
@@ -94,7 +99,6 @@ function SimulationPage(props) {
 				<div className="section">
 					<div className="simulation-header">
 						<h2>Code</h2>
-						<Button onClick={handleClick}>Reset</Button>
 					</div>
 
 					<div className="code-section">
@@ -111,7 +115,11 @@ function SimulationPage(props) {
 				</div>
 
 				<div className="section output-section">
-					<h2>Output</h2>
+					<div className="simulation-header">
+						<h2>Output</h2>
+						<Button onClick={handleResetClick}>Reset</Button>
+					</div>
+
 					<canvas ref={canvasRef} />
 				</div>
 
